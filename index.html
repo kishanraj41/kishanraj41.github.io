@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kishan Raj | Data Engineer & ML Practitioner</title>
-<meta name="description" content="Data Engineer with 5+ years building scalable pipelines, ML models, and AI-driven solutions on Azure, Databricks, and cloud platforms.">
-<meta property="og:title" content="Kishan Raj — Data Engineer & ML Practitioner">
-<meta property="og:description" content="Building scalable data systems that drive real business outcomes.">
+<title>Kishan Raj · Data Engineer & ML Practitioner</title>
+<meta name="description" content="Data Engineer at Midtown Athletic Club. Author of AutoLineage, an open-source Python library for automatic ML data lineage. NVIDIA Generative AI Hackathon 2nd Place.">
+<meta property="og:title" content="Kishan Raj · Data Engineer & ML Practitioner">
+<meta property="og:description" content="Data systems and open-source AI tools. Currently shipping AutoLineage on PyPI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -45,35 +45,53 @@ nav.scrolled{border-bottom-color:var(--bdr)}
 /* Hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden}
 .hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(92,225,230,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(92,225,230,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000,transparent)}
-.hglow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--acc-g),transparent 70%);top:20%;left:50%;transform:translate(-50%,-50%);filter:blur(80px);animation:pg 6s ease-in-out infinite;pointer-events:none}
-.hglow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,74,.12),transparent 70%);bottom:10%;right:10%;filter:blur(60px);animation:pg 8s ease-in-out infinite 2s;pointer-events:none}
-@keyframes pg{0%,100%{opacity:.3;transform:translate(-50%,-50%) scale(1)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1.15)}}
+
+/* DAG visual in hero: actually on-theme for a data engineer */
+.hdag{position:absolute;top:50%;right:6%;transform:translateY(-50%);width:42%;max-width:520px;opacity:.85;pointer-events:none;z-index:1}
+.hdag svg{width:100%;height:auto;display:block}
+.hdag .node-rect{fill:var(--bg2);stroke:var(--bdr);stroke-width:1}
+.hdag .node-active{stroke:var(--acc);fill:var(--acc-d)}
+.hdag .node-warm{stroke:var(--warm);fill:rgba(255,107,74,.1)}
+.hdag .nlabel{font-family:var(--mono);font-size:9px;fill:var(--txt2)}
+.hdag .nlabel-acc{fill:var(--acc)}
+.hdag .nhash{font-family:var(--mono);font-size:7px;fill:var(--txt2);opacity:.6}
+.hdag .edge{stroke:var(--bdr);stroke-width:1;fill:none}
+.hdag .edge-active{stroke:var(--acc);stroke-width:1.5;stroke-dasharray:4 4;animation:dash 2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-16}}
+.hdag .pulse{fill:var(--acc);animation:pls 2s ease-in-out infinite}
+@keyframes pls{0%,100%{r:3;opacity:1}50%{r:5;opacity:.4}}
+
+.hcontent{position:relative;z-index:2;max-width:600px}
 .hlabel{font-family:var(--mono);font-size:.8rem;color:var(--acc);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;opacity:0;animation:fu .8s .2s forwards}
-.sdot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:bk 2s infinite}
+.sdot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:bk 2s infinite;flex-shrink:0}
 @keyframes bk{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-family:var(--serif);font-size:clamp(3rem,8vw,7rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s .4s forwards}
+.hero h1{font-family:var(--serif);font-size:clamp(2.5rem,6.5vw,5.5rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s .4s forwards}
 .hero h1 em{font-style:italic;color:var(--acc)}
-.hsub{font-size:1.15rem;color:var(--txt2);max-width:600px;line-height:1.7;margin-bottom:2.5rem;opacity:0;animation:fu .8s .6s forwards}
+.hsub{font-size:1.05rem;color:var(--txt2);max-width:560px;line-height:1.7;margin-bottom:2.5rem;opacity:0;animation:fu .8s .6s forwards}
+.hsub strong{color:var(--txt);font-weight:500}
+.hsub code{font-family:var(--mono);font-size:.92em;background:var(--bg3);padding:.15em .45em;border-radius:4px;color:var(--acc);border:1px solid var(--bdr)}
 .hacts{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;opacity:0;animation:fu .8s .8s forwards}
 .bp{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:var(--acc);color:var(--bg);font-weight:600;font-size:.9rem;border-radius:100px;border:none;cursor:pointer;transition:all .3s;font-family:var(--sans)}
 .bp:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--acc-g)}
 .bg{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border:1px solid var(--bdr);color:var(--txt);font-weight:500;font-size:.9rem;border-radius:100px;cursor:pointer;background:none;transition:all .3s;font-family:var(--sans)}
 .bg:hover{border-color:var(--txt2);transform:translateY(-2px)}
-.hstats{display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--bdr);opacity:0;animation:fu .8s 1s forwards}
+.hstats{display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--bdr);opacity:0;animation:fu .8s 1s forwards;position:relative;z-index:2}
 .hsn{font-family:var(--serif);font-size:2.5rem;color:var(--txt);line-height:1}
-.hsl{font-size:.8rem;color:var(--txt2);margin-top:.3rem}
+.hsl{font-size:.78rem;color:var(--txt2);margin-top:.3rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
 /* Sections */
 section{padding:6rem 4rem;position:relative}
 .sl{font-family:var(--mono);font-size:.75rem;color:var(--acc);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem}
 .st{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.02em;margin-bottom:1rem}
-.sd{color:var(--txt2);max-width:560px;margin-bottom:3.5rem;font-size:1.05rem}
+.sd{color:var(--txt2);max-width:600px;margin-bottom:3.5rem;font-size:1.02rem}
 .dv{width:100%;height:1px;background:var(--bdr)}
 
 /* About */
 .agrid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.atxt p{color:var(--txt2);margin-bottom:1.25rem;font-size:1.05rem;line-height:1.8}
+.atxt p{color:var(--txt2);margin-bottom:1.25rem;font-size:1.02rem;line-height:1.8}
+.atxt strong{color:var(--txt);font-weight:500}
+.atxt code{font-family:var(--mono);font-size:.88em;background:var(--bg3);padding:.1em .4em;border-radius:4px;color:var(--acc);border:1px solid var(--bdr)}
 .ahi{padding:2rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:16px;margin-top:2rem}
 .aht{font-family:var(--mono);font-size:.75rem;color:var(--acc);text-transform:uppercase;letter-spacing:.15em;margin-bottom:1rem}
 .clist{display:flex;flex-direction:column;gap:.4rem}
@@ -84,9 +102,10 @@ section{padding:6rem 4rem;position:relative}
 .cn{font-size:.88rem}
 .cd{font-family:var(--mono);font-size:.68rem;color:var(--txt2);white-space:nowrap}
 .acards{display:flex;flex-direction:column;gap:1.25rem}
-.ac{padding:2rem;background:var(--bg3);border:1px solid var(--bdr);border-radius:16px;transition:all .4s}
+.ac{padding:2rem;background:var(--bg3);border:1px solid var(--bdr);border-radius:16px;transition:all .4s;position:relative}
 .ac:hover{border-color:var(--acc);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
-.aci{width:48px;height:48px;border-radius:12px;background:var(--acc-d);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.3rem}
+.aci{font-family:var(--mono);font-size:.7rem;color:var(--txt2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.aci::before{content:'';width:18px;height:1px;background:var(--acc)}
 .ac h3{font-size:1.1rem;margin-bottom:.5rem;font-weight:600}
 .ac p{font-size:.9rem;color:var(--txt2);line-height:1.6}
 
@@ -97,7 +116,7 @@ section{padding:6rem 4rem;position:relative}
 .si{background:var(--bg3);padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;transition:all .3s;cursor:default}
 .si:hover{background:var(--bg2);transform:scale(1.02);z-index:2;box-shadow:0 8px 30px rgba(0,0,0,.4)}
 .sih{display:flex;align-items:center;gap:.75rem}
-.sdot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.sdotx{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .sin{font-weight:600;font-size:.92rem}
 .sid{font-size:.78rem;color:var(--txt2);line-height:1.5}
 
@@ -114,13 +133,16 @@ section{padding:6rem 4rem;position:relative}
 .ebl{list-style:none;padding:0;margin-bottom:1.25rem}
 .ebl li{font-size:.88rem;color:var(--txt2);line-height:1.7;padding:.3rem 0 .3rem 1.25rem;position:relative}
 .ebl li::before{content:'';position:absolute;left:0;top:.7rem;width:5px;height:5px;border-radius:50%;background:rgba(92,225,230,.4)}
+.ebl li strong{color:var(--txt);font-weight:500}
 .ed{display:flex;flex-wrap:wrap;gap:.5rem}
 .et{font-size:.72rem;padding:.25rem .65rem;background:var(--acc-d);color:var(--acc);border-radius:100px;font-family:var(--mono)}
 
 /* Projects */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem}
-.pc{background:var(--bg3);border:1px solid var(--bdr);border-radius:16px;overflow:hidden;transition:all .4s;display:flex;flex-direction:column}
+.pc{background:var(--bg3);border:1px solid var(--bdr);border-radius:16px;overflow:hidden;transition:all .4s;display:flex;flex-direction:column;position:relative}
 .pc:hover{border-color:rgba(92,225,230,.3);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.pc.featured{border-color:rgba(92,225,230,.4);background:linear-gradient(180deg,rgba(92,225,230,.04),var(--bg3))}
+.pc.featured::before{content:'FEATURED';position:absolute;top:1rem;right:1rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;color:var(--acc);background:var(--acc-d);padding:.25rem .6rem;border-radius:4px;border:1px solid rgba(92,225,230,.3);z-index:3}
 .pv{height:180px;position:relative;overflow:hidden}
 .pvb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .pv1{background:linear-gradient(135deg,#0d1a2e,#0f3460,#1a3a5f)}
@@ -129,17 +151,23 @@ section{padding:6rem 4rem;position:relative}
 .pv4{background:linear-gradient(135deg,#1a1a0d,#2e2d0d,#403e16)}
 .pv5{background:linear-gradient(135deg,#1a0a2e,#2d1b69,#1e3a5f)}
 .pv6{background:linear-gradient(135deg,#0a1a12,#0d2e1b,#164028)}
+.pv-al{background:linear-gradient(135deg,#0a1f22,#0e3438,#0a4a52)}
 .pcon{padding:1.75rem;flex:1;display:flex;flex-direction:column}
 .pty{font-family:var(--mono);font-size:.7rem;color:var(--warm);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+.pty.pty-acc{color:var(--acc)}
 .pnm{font-size:1.2rem;font-weight:600;margin-bottom:.75rem}
 .pds{font-size:.88rem;color:var(--txt2);line-height:1.7;margin-bottom:1.25rem;flex:1}
+.pds code{font-family:var(--mono);font-size:.88em;background:var(--bg);padding:.1em .4em;border-radius:4px;color:var(--acc);border:1px solid var(--bdr)}
 .pmt{display:flex;gap:1.5rem;margin-bottom:1rem;padding:.75rem 0;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
 .pmv{font-family:var(--serif);font-size:1.3rem;color:var(--acc);line-height:1}
 .pml{font-size:.68rem;color:var(--txt2);margin-top:.2rem}
-.ptc{display:flex;flex-wrap:wrap;gap:.4rem}
+.ptc{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
 .ptc span{font-size:.7rem;padding:.25rem .6rem;background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:6px;font-family:var(--mono);color:var(--txt2)}
+.plinks{display:flex;gap:.75rem;flex-wrap:wrap}
+.plinks a{font-family:var(--mono);font-size:.72rem;color:var(--acc);text-transform:uppercase;letter-spacing:.1em;padding:.4rem .85rem;border:1px solid var(--bdr);border-radius:6px;transition:all .3s;display:inline-flex;align-items:center;gap:.4rem}
+.plinks a:hover{border-color:var(--acc);background:var(--acc-d)}
 
-/* Articles */
+/* Writing */
 .artg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
 .artc{padding:2rem;background:var(--bg3);border:1px solid var(--bdr);border-radius:16px;transition:all .4s;display:block}
 .artc:hover{border-color:rgba(92,225,230,.3);transform:translateY(-4px)}
@@ -157,8 +185,8 @@ section{padding:6rem 4rem;position:relative}
 .cpill:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-3px);box-shadow:0 8px 25px var(--acc-d)}
 .cpill svg{width:18px;height:18px}
 
-footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;color:var(--txt2);font-size:.85rem}
-.fright{display:flex;gap:2rem}
+footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;color:var(--txt2);font-size:.85rem;flex-wrap:wrap;gap:1rem}
+.fright{display:flex;gap:2rem;flex-wrap:wrap}
 .fright a{color:var(--txt2);transition:color .3s;font-size:.85rem}
 .fright a:hover{color:var(--acc)}
 
@@ -168,6 +196,9 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
 .rvd1{transition-delay:.1s}.rvd2{transition-delay:.2s}.rvd3{transition-delay:.3s}.rvd4{transition-delay:.4s}
 
 /* Responsive */
+@media(max-width:1100px){
+  .hdag{opacity:.4;width:48%}
+}
 @media(max-width:900px){
   section,.hero{padding:4rem 1.5rem}.csec{padding:5rem 1.5rem}
   nav{padding:1rem 1.5rem}.nlinks{display:none}.ntog{display:block}
@@ -175,8 +206,10 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
   .agrid{grid-template-columns:1fr;gap:2rem}
   .pgrid,.artg{grid-template-columns:1fr}
   .hstats{gap:2rem;flex-wrap:wrap}
-  footer{flex-direction:column;gap:1rem;text-align:center}
+  footer{flex-direction:column;text-align:center}
   .etl{padding-left:2rem}
+  .hdag{display:none}
+  .hcontent{max-width:100%}
 }
 @media(max-width:600px){
   .hero h1{font-size:2.5rem}.hsn{font-size:2rem}
@@ -198,28 +231,99 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
     <a href="#exp">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#writing">Writing</a>
-    <a href="#contact" class="ncta">Let's Talk</a>
+    <a href="#contact" class="ncta">Get in touch</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hgrid"></div>
-  <div class="hglow"></div>
-  <div class="hglow2"></div>
-  <div class="hlabel"><span class="sdot"></span>Data Engineer & ML Practitioner — Austin, TX</div>
-  <h1>Building systems<br>that make data <em>useful</em></h1>
-  <p class="hsub">I design scalable data pipelines, production ML models, and AI-driven solutions on Azure, Databricks & GCP — turning complex data into actionable intelligence that drives retention, revenue, and operational efficiency.</p>
-  <div class="hacts">
-    <a href="#projects" class="bp">View Projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    <a href="https://github.com/YOUR_GITHUB" target="_blank" class="bg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> GitHub</a>
-    <a href="mailto:kishanraj41@gmail.com" class="bg">Get in Touch</a>
+
+  <!-- DAG visual: actual data lineage graph, on-theme for a DE / AutoLineage author -->
+  <div class="hdag" aria-hidden="true">
+    <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg">
+      <!-- edges -->
+      <path class="edge edge-active" d="M 60 80 L 200 80" />
+      <path class="edge edge-active" d="M 60 180 L 200 80" />
+      <path class="edge edge-active" d="M 60 180 L 200 180" />
+      <path class="edge edge-active" d="M 60 280 L 200 280" />
+      <path class="edge" d="M 200 80 L 340 130" />
+      <path class="edge" d="M 200 180 L 340 130" />
+      <path class="edge" d="M 200 180 L 340 230" />
+      <path class="edge" d="M 200 280 L 340 230" />
+
+      <!-- source nodes -->
+      <g>
+        <rect class="node-rect" x="10" y="60" width="100" height="40" rx="6" />
+        <text class="nlabel" x="22" y="78">amplitude.json</text>
+        <text class="nhash" x="22" y="92">sha:a3c5d9...</text>
+      </g>
+      <g>
+        <rect class="node-rect" x="10" y="160" width="100" height="40" rx="6" />
+        <text class="nlabel" x="22" y="178">members.csv</text>
+        <text class="nhash" x="22" y="192">sha:f6g7h8...</text>
+      </g>
+      <g>
+        <rect class="node-rect" x="10" y="260" width="100" height="40" rx="6" />
+        <text class="nlabel" x="22" y="278">checkins.parquet</text>
+        <text class="nhash" x="22" y="292">sha:9f2e8b...</text>
+      </g>
+
+      <!-- transform nodes -->
+      <g>
+        <rect class="node-rect node-active" x="150" y="60" width="100" height="40" rx="6" />
+        <text class="nlabel nlabel-acc" x="162" y="78">.merge()</text>
+        <text class="nhash" x="162" y="92">pyspark</text>
+      </g>
+      <g>
+        <rect class="node-rect node-active" x="150" y="160" width="100" height="40" rx="6" />
+        <text class="nlabel nlabel-acc" x="162" y="178">.dropna()</text>
+        <text class="nhash" x="162" y="192">pandas</text>
+      </g>
+      <g>
+        <rect class="node-rect node-active" x="150" y="260" width="100" height="40" rx="6" />
+        <text class="nlabel nlabel-acc" x="162" y="278">.groupby()</text>
+        <text class="nhash" x="162" y="292">pandas</text>
+      </g>
+
+      <!-- output nodes -->
+      <g>
+        <rect class="node-rect node-warm" x="290" y="110" width="100" height="40" rx="6" />
+        <text class="nlabel" x="302" y="128" style="fill:var(--warm)">features.parquet</text>
+        <text class="nhash" x="302" y="142">silver</text>
+      </g>
+      <g>
+        <rect class="node-rect node-warm" x="290" y="210" width="100" height="40" rx="6" />
+        <text class="nlabel" x="302" y="228" style="fill:var(--warm)">churn_model.pkl</text>
+        <text class="nhash" x="302" y="242">xgboost · 82% rec</text>
+      </g>
+
+      <!-- pulse markers -->
+      <circle class="pulse" cx="60" cy="80" r="3" />
+      <circle class="pulse" cx="60" cy="180" r="3" style="animation-delay:.3s" />
+      <circle class="pulse" cx="60" cy="280" r="3" style="animation-delay:.6s" />
+
+      <!-- caption -->
+      <text class="nhash" x="10" y="340" style="font-size:8px">$ pip install autolineage</text>
+    </svg>
   </div>
+
+  <div class="hcontent">
+    <div class="hlabel"><span class="sdot"></span>Data Engineer · Austin, TX</div>
+    <h1>Data systems<br>and <em>open-source</em><br>AI tools.</h1>
+    <p class="hsub">Currently a <strong>Data Engineer II</strong> at Midtown Athletic Club, building lakehouse infrastructure and production ML on Azure Databricks. I also write and ship <code>autolineage</code>, an open-source Python library for automatic data lineage in pandas and scikit-learn pipelines. NVIDIA Generative AI Hackathon, 2nd Place.</p>
+    <div class="hacts">
+      <a href="#projects" class="bp">View projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="https://github.com/kishanraj41" target="_blank" rel="noopener" class="bg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> GitHub</a>
+      <a href="https://pypi.org/project/autolineage/" target="_blank" rel="noopener" class="bg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> PyPI</a>
+    </div>
+  </div>
+
   <div class="hstats">
-    <div><div class="hsn">5+</div><div class="hsl">Years Experience</div></div>
-    <div><div class="hsn">10M+</div><div class="hsl">Records / Day</div></div>
-    <div><div class="hsn">4</div><div class="hsl">Certifications</div></div>
-    <div><div class="hsn">2nd</div><div class="hsl">NVIDIA Hackathon</div></div>
+    <div><div class="hsn">5+</div><div class="hsl">Years experience</div></div>
+    <div><div class="hsn">500K+</div><div class="hsl">ML records served</div></div>
+    <div><div class="hsn">4</div><div class="hsl">Pro certifications</div></div>
+    <div><div class="hsn">2nd</div><div class="hsl">NVIDIA hackathon</div></div>
   </div>
 </section>
 
@@ -227,29 +331,29 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="sl rv">01 — About</div>
+  <div class="sl rv">01 · About</div>
   <div class="st rv">A bit about me</div>
   <div class="agrid" style="margin-top:2rem">
     <div class="atxt rv">
-      <p>I'm a Data Engineer based in Austin, TX, currently building data infrastructure and ML models at <strong style="color:var(--txt)">Midtown Athletic Club</strong> in Chicago. My work spans the full data lifecycle — from ingesting raw sources through medallion architectures to delivering production ML models that move business metrics.</p>
-      <p>I specialize in end-to-end ML pipelines (XGBoost, Random Forest, NLP/NER), cloud data platforms (Azure, Databricks, GCP), and real-time architectures processing millions of records daily. I've migrated 10TB+ datasets to cloud, built clinical NLP systems, and deployed churn models across 500K+ member records.</p>
-      <p>M.S. in Computer Science from the University of Wisconsin Milwaukee. Currently exploring scalable AI products, writing technical articles, and building with LLMs.</p>
+      <p>I'm a Data Engineer based in Austin, currently building data infrastructure and ML systems for <strong>Midtown Athletic Club</strong> in Chicago. My day-to-day is mostly Azure Databricks, PySpark, and Python. I write a lot of SQL, deploy XGBoost models, and try to keep pipelines from breaking.</p>
+      <p>On the side, I write and maintain <code>autolineage</code>, an open-source Python library that automatically tracks data lineage across pandas, NumPy, and scikit-learn pipelines via runtime function hooking. It's on PyPI and GitHub. The goal is reproducibility for ML workflows and a sane path toward EU AI Act Article 10 compliance, without users having to change a line of code.</p>
+      <p>I have an M.S. in Computer Science from the <strong>University of Wisconsin Milwaukee</strong>. Before that, I built data pipelines for healthcare at Optum Care and consulted in Delhi. These days I'm spending more time on open source, technical writing, and building with LLMs.</p>
       <div class="ahi">
         <div class="aht">Certifications & Achievements</div>
         <div class="clist">
           <div class="ci"><div class="cil"><div class="cb" style="background:var(--warm)"></div><span class="cn">Databricks Certified Apache Spark Developer</span></div><span class="cd">Sep 2025</span></div>
           <div class="ci"><div class="cil"><div class="cb" style="background:var(--gold)"></div><span class="cn">Databricks Certified ML Associate</span></div><span class="cd">Oct 2024</span></div>
-          <div class="ci"><div class="cil"><div class="cb" style="background:var(--green)"></div><span class="cn">NVIDIA Hackathon (Gen AI) — 2nd Place</span></div><span class="cd">2024</span></div>
+          <div class="ci"><div class="cil"><div class="cb" style="background:var(--green)"></div><span class="cn">NVIDIA Generative AI Hackathon, 2nd Place</span></div><span class="cd">2024</span></div>
           <div class="ci"><div class="cil"><div class="cb" style="background:var(--acc)"></div><span class="cn">Databricks Certified Data Engineer Associate</span></div><span class="cd">Mar 2024</span></div>
           <div class="ci"><div class="cil"><div class="cb" style="background:#0078D4"></div><span class="cn">Azure Data Engineer Associate (DP-203)</span></div><span class="cd">Oct 2023</span></div>
         </div>
       </div>
     </div>
     <div class="acards">
-      <div class="ac rv rvd1"><div class="aci">⚡</div><h3>Pipeline Architecture</h3><p>End-to-end ETL/ELT pipelines with Azure Data Factory, PySpark, and medallion architecture — bronze through gold layers with SCD Type-2 tracking and automated quality checks.</p></div>
-      <div class="ac rv rvd2"><div class="aci">🧠</div><h3>Machine Learning</h3><p>Production ML models for churn prediction (XGBoost, SHAP), clinical NLP (ClinicalBERT, spaCy), sentiment analysis with LLMs, and predictive analytics driving 15%+ conversion lifts.</p></div>
-      <div class="ac rv rvd3"><div class="aci">☁️</div><h3>Cloud & Data Platforms</h3><p>Multi-cloud mastery — Azure (ADF, Synapse, ADLS, Databricks), GCP (BigQuery, Composer), AWS (S3, Redshift, Lambda, Glue) with Snowflake and Kafka integrations.</p></div>
-      <div class="ac rv rvd4"><div class="aci">📊</div><h3>Analytics & BI</h3><p>Power BI and Qlik dashboards for C-level stakeholders, Tableau visualizations, and custom reporting that translates complex data into actionable business decisions.</p></div>
+      <div class="ac rv rvd1"><div class="aci">01 · Pipelines</div><h3>Lakehouse architecture</h3><p>Bronze, silver, gold pipelines on Azure Databricks with Unity Catalog. Streaming ingestion via Auto Loader, SCD Type-2, schema evolution, and exactly-once deduplication for event data.</p></div>
+      <div class="ac rv rvd2"><div class="aci">02 · ML</div><h3>Production ML systems</h3><p>XGBoost churn prediction (49 features, SHAP, MLflow), clinical NLP with ClinicalBERT and spaCy, and LLM-powered sentiment analytics with LLaMA 3.3 70B over 50K+ documents.</p></div>
+      <div class="ac rv rvd3"><div class="aci">03 · Open source</div><h3>AutoLineage on PyPI</h3><p>Python library for automatic ML data lineage. Function hooking, SHA-256 integrity, SQLite store, NetworkX DAGs, CLI, Jupyter magics, and one-command compliance reports.</p></div>
+      <div class="ac rv rvd4"><div class="aci">04 · Cloud</div><h3>Cloud platforms</h3><p>Azure (ADF, Synapse, ADLS, Databricks), GCP (BigQuery, Vertex AI, Gemini, GKE), AWS (S3, Redshift, Lambda, Glue, EMR). Snowflake and Kafka for analytical workloads.</p></div>
     </div>
   </div>
 </section>
@@ -258,46 +362,46 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
 
 <!-- STACK -->
 <section id="stack">
-  <div class="sl rv">02 — Tech Stack</div>
-  <div class="st rv">Tools of the trade</div>
-  <div class="sd rv">Technologies I use daily to build reliable, scalable data systems and ML models.</div>
+  <div class="sl rv">02 · Stack</div>
+  <div class="st rv">What I build with</div>
+  <div class="sd rv">The tools and platforms I reach for daily, grouped roughly by where they live in a typical pipeline.</div>
   <div class="scat">
     <div class="rv">
       <div class="scl">Languages & Frameworks</div>
       <div class="sg">
-        <div class="si"><div class="sih"><div class="sdot" style="background:#3776AB"></div><span class="sin">Python</span></div><span class="sid">PySpark, Pandas, NumPy, ML pipelines</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#336791"></div><span class="sin">SQL / T-SQL</span></div><span class="sid">Complex queries, stored procs, optimization</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#E25A1C"></div><span class="sin">Apache Spark</span></div><span class="sid">Distributed processing, DataFrames</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#02569B"></div><span class="sin">Scala</span></div><span class="sid">Spark applications, JVM ecosystem</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#3776AB"></div><span class="sin">Python</span></div><span class="sid">PySpark, pandas, NumPy, scikit-learn, PyTorch</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#336791"></div><span class="sin">SQL / T-SQL</span></div><span class="sid">Window functions, query plans, optimization</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#E25A1C"></div><span class="sin">Apache Spark</span></div><span class="sid">DataFrames, Structured Streaming</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#02569B"></div><span class="sin">Scala</span></div><span class="sid">Spark applications, JVM ecosystem</span></div>
       </div>
     </div>
     <div class="rv">
       <div class="scl">Cloud & Data Platforms</div>
       <div class="sg">
-        <div class="si"><div class="sih"><div class="sdot" style="background:#0078D4"></div><span class="sin">Azure</span></div><span class="sid">ADF, Synapse, ADLS, Databricks</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#FF3621"></div><span class="sin">Databricks</span></div><span class="sid">Unity Catalog, Delta Lake, MLflow</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#4285F4"></div><span class="sin">GCP</span></div><span class="sid">BigQuery, Cloud Composer, GKE</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#FF9900"></div><span class="sin">AWS</span></div><span class="sid">S3, Redshift, Lambda, Glue, EMR</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#29B5E8"></div><span class="sin">Snowflake</span></div><span class="sid">Data modeling, SSOT, data marts</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#231F20"></div><span class="sin">Apache Kafka</span></div><span class="sid">Real-time streaming, event pipelines</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#0078D4"></div><span class="sin">Azure</span></div><span class="sid">ADF, Synapse, ADLS, Databricks</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#FF3621"></div><span class="sin">Databricks</span></div><span class="sid">Unity Catalog, Delta Lake, MLflow</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#4285F4"></div><span class="sin">GCP</span></div><span class="sid">BigQuery, Vertex AI, Gemini, GKE</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#FF9900"></div><span class="sin">AWS</span></div><span class="sid">S3, Redshift, Lambda, Glue, EMR</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#29B5E8"></div><span class="sin">Snowflake</span></div><span class="sid">Modeling, SSOT tables, data marts</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#231F20"></div><span class="sin">Apache Kafka</span></div><span class="sid">Real-time streaming, event pipelines</span></div>
       </div>
     </div>
     <div class="rv">
       <div class="scl">ML / AI</div>
       <div class="sg">
-        <div class="si"><div class="sih"><div class="sdot" style="background:#76B900"></div><span class="sin">Scikit-learn / XGBoost</span></div><span class="sid">Classification, feature engineering</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#EE4C2C"></div><span class="sin">PyTorch / NLP</span></div><span class="sid">ClinicalBERT, spaCy, NER</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#0194E2"></div><span class="sin">MLflow</span></div><span class="sid">Experiment tracking, versioning</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#10A37F"></div><span class="sin">LLMs / Prompt Eng.</span></div><span class="sid">Sentiment analysis, journey modeling</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#76B900"></div><span class="sin">XGBoost / scikit-learn</span></div><span class="sid">Classification, SHAP, SMOTE, Hyperopt</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#EE4C2C"></div><span class="sin">PyTorch / NLP</span></div><span class="sid">ClinicalBERT, spaCy, SciSpacy, NER</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#0194E2"></div><span class="sin">MLflow</span></div><span class="sid">Tracking, registry, champion / challenger</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#10A37F"></div><span class="sin">LLMs</span></div><span class="sid">LLaMA 3.3, Gemini, GPT, Claude, RAG</span></div>
       </div>
     </div>
     <div class="rv">
-      <div class="scl">DevOps & Tools</div>
+      <div class="scl">DevOps & Observability</div>
       <div class="sg">
-        <div class="si"><div class="sih"><div class="sdot" style="background:#2496ED"></div><span class="sin">Docker / K8s</span></div><span class="sid">Containerization, CI/CD environments</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#F05032"></div><span class="sin">Git / CI-CD</span></div><span class="sid">Version control, deployment pipelines</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#F2C811"></div><span class="sin">Power BI / Qlik</span></div><span class="sid">Executive dashboards, BI reporting</span></div>
-        <div class="si"><div class="sih"><div class="sdot" style="background:#E97627"></div><span class="sin">Tableau</span></div><span class="sid">Data visualization, interactive reports</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#2496ED"></div><span class="sin">Docker / Kubernetes</span></div><span class="sid">Containers, GKE, CI/CD environments</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#F05032"></div><span class="sin">Git + GitHub Actions</span></div><span class="sid">CI, automated PyPI publishing</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#F2C811"></div><span class="sin">Power BI / Qlik</span></div><span class="sid">Executive dashboards, BI reporting</span></div>
+        <div class="si"><div class="sih"><div class="sdotx" style="background:#E97627"></div><span class="sin">Tableau</span></div><span class="sid">Data visualization, interactive reports</span></div>
       </div>
     </div>
   </div>
@@ -307,43 +411,41 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
 
 <!-- EXPERIENCE -->
 <section id="exp">
-  <div class="sl rv">03 — Experience</div>
-  <div class="st rv">Career timeline</div>
-  <div class="sd rv">From consulting in Delhi to building ML-powered data platforms in Chicago.</div>
+  <div class="sl rv">03 · Experience</div>
+  <div class="st rv">Where I've worked</div>
+  <div class="sd rv">From consulting in Delhi to building healthcare NLP at Optum, then onto lakehouse and ML work in Chicago.</div>
   <div class="etl">
     <div class="ei rv">
-      <div class="eh"><div><div class="ett">Data Engineer II</div><div class="eco">Midtown Athletic Club · Chicago, IL</div></div><div class="edt">Jun 2023 — Present</div></div>
+      <div class="eh"><div><div class="ett">Data Engineer II</div><div class="eco">Midtown Athletic Club · Chicago, IL</div></div><div class="edt">Jun 2023 – Present</div></div>
       <ul class="ebl">
-        <li>Built member churn prediction model (XGBoost) processing 500K+ records across 49 engineered features with SHAP explainability and MLflow tracking</li>
-        <li>Built LLM models for sentiment analysis on member feedback, improving response relevance and intent alignment by 25–35%</li>
-        <li>Developed ETL pipelines with ADF & PySpark reducing processing time by 30%, enabling real-time processing of 10M+ records/day</li>
-        <li>Architected medallion architecture pipelines for Amplitude analytics & Silverware POS with SCD Type-2 in Unity Catalog</li>
-        <li>Implemented data quality frameworks with automated profiling and validation across multi-source integrations</li>
+        <li>Designed and deployed an <strong>XGBoost churn prediction system</strong> across 500K+ member records. Engineered 49 features in PySpark, used SMOTE / SHAP / Hyperopt, and wired it into MLflow with champion / challenger deployment. Achieved 82% recall.</li>
+        <li>Built an <strong>LLM-powered NPS sentiment platform</strong> using Databricks ai_query with LLaMA 3.3 70B over 50K+ member comments. Two-stage normalization (LLM extraction + SQL keyword mapping). Presented to the CEO; informed a facility plan projected to reduce complaints by 20%.</li>
+        <li>Architected the <strong>lakehouse data platform (bronze / silver / gold)</strong> on Azure Databricks + Unity Catalog. Six source systems, streaming ingestion via Auto Loader, SCD Type-2, schema evolution, and a data quality framework that reduced data incidents by 40%.</li>
+        <li>Built <strong>A/B testing and experiment tracking infrastructure</strong> for retention interventions across four incentive types. Results directly informed executive strategy and budget.</li>
       </ul>
-      <div class="ed"><span class="et">Azure</span><span class="et">Databricks</span><span class="et">PySpark</span><span class="et">XGBoost</span><span class="et">MLflow</span><span class="et">LLMs</span><span class="et">Delta Lake</span></div>
+      <div class="ed"><span class="et">Azure</span><span class="et">Databricks</span><span class="et">PySpark</span><span class="et">XGBoost</span><span class="et">MLflow</span><span class="et">LLaMA</span><span class="et">Delta Lake</span><span class="et">Unity Catalog</span></div>
     </div>
     <div class="ei rv">
-      <div class="eh"><div><div class="ett">Data Engineer</div><div class="eco">Optum Care (UnitedHealth Group) · Eden Prairie, MN</div></div><div class="edt">Jun 2022 — Jan 2023</div></div>
+      <div class="eh"><div><div class="ett">Data Engineer</div><div class="eco">Optum Care (UnitedHealth Group) · Eden Prairie, MN</div></div><div class="edt">Jun 2022 – Jan 2023</div></div>
       <ul class="ebl">
-        <li>Led 10TB+ data migration to Azure cloud — 25% reduction in processing time, enabling near-real-time financial analytics</li>
-        <li>Designed Snowflake data models with SSOT tables; deployed real-time ingestion with Apache Kafka improving reporting by 20%</li>
-        <li>Developing clinical NLP pipeline (PyTorch, ClinicalBERT, spaCy) for HCC coding detection — targeting &gt;85% precision</li>
-        <li>Built NER-based condition extraction system flagging revenue gaps at $3K+/year per missed HCC code</li>
+        <li>Built a <strong>clinical NLP pipeline</strong> using PyTorch, spaCy, SciSpacy, and ClinicalBERT for HCC risk adjustment coding. NER-based condition extraction with negation detection. Surfaced revenue gaps estimated at $3K+/year per missed code with &gt;85% precision and &gt;80% recall.</li>
+        <li>Led <strong>migration of 10TB+ historical finance data to Azure</strong>. Consolidated redundant ETL workflows and cut processing time by 25%, enabling near-real-time financial analytics.</li>
+        <li>Designed Snowflake data models with SSOT tables and deployed Apache Kafka real-time ingestion, improving financial reporting response times by 20%. Built Power BI dashboards saving 15+ analyst hours/week.</li>
       </ul>
-      <div class="ed"><span class="et">Snowflake</span><span class="et">Kafka</span><span class="et">PyTorch</span><span class="et">ClinicalBERT</span><span class="et">Docker</span><span class="et">Power BI</span></div>
+      <div class="ed"><span class="et">Snowflake</span><span class="et">Kafka</span><span class="et">PyTorch</span><span class="et">ClinicalBERT</span><span class="et">spaCy</span><span class="et">Docker</span><span class="et">Power BI</span></div>
     </div>
     <div class="ei rv">
-      <div class="eh"><div><div class="ett">Data Engineer</div><div class="eco">Stirring Minds (Consulting) · Delhi, India</div></div><div class="edt">Mar 2019 — Aug 2021</div></div>
+      <div class="eh"><div><div class="ett">Data Engineer</div><div class="eco">Stirring Minds (Consulting) · Delhi, India</div></div><div class="edt">Mar 2019 – Aug 2021</div></div>
       <ul class="ebl">
-        <li>Designed Snowflake data models reducing report generation time by 25%; built ETL pipelines processing 5M+ records daily</li>
-        <li>Developed AWS Lambda for event-driven execution; S3 to Redshift data loading with PySpark for real-time analysis</li>
-        <li>Built Tableau dashboards and optimized Snowflake queries improving data retrieval by 15%</li>
+        <li>Designed Snowflake data models and built ETL pipelines (Python, Apache Airflow) processing 5M+ records daily, reducing report generation time by 25%.</li>
+        <li>Developed AWS Lambda for event-driven pipeline execution. Loaded data from S3 to Redshift using PySpark. Built Tableau dashboards and tuned Snowflake queries, improving data retrieval performance by 15%.</li>
       </ul>
       <div class="ed"><span class="et">AWS</span><span class="et">Snowflake</span><span class="et">Airflow</span><span class="et">Redshift</span><span class="et">Lambda</span><span class="et">Tableau</span></div>
     </div>
     <div class="ei rv">
-      <div class="eh"><div><div class="ett">M.S. Computer Science</div><div class="eco">University of Wisconsin Milwaukee</div></div><div class="edt">Aug 2021 — May 2023</div></div>
-      <div class="ed"><span class="et">Machine Learning</span><span class="et">AI</span><span class="et">Algorithms</span><span class="et">Data Analysis</span><span class="et">Software Eng.</span></div>
+      <div class="eh"><div><div class="ett">M.S. Computer Science</div><div class="eco">University of Wisconsin Milwaukee</div></div><div class="edt">Aug 2021 – May 2023</div></div>
+      <p style="color:var(--txt2);font-size:.9rem;line-height:1.7;margin-bottom:1rem">Coursework in machine learning, AI, distributed systems, algorithms, and software engineering.</p>
+      <div class="ed"><span class="et">Machine Learning</span><span class="et">AI</span><span class="et">Distributed Systems</span><span class="et">Algorithms</span></div>
     </div>
   </div>
 </section>
@@ -352,70 +454,113 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="sl rv">04 — Projects</div>
-  <div class="st rv">Featured work</div>
-  <div class="sd rv">Key projects showcasing data engineering, ML, and AI-driven solutions.</div>
+  <div class="sl rv">04 · Projects</div>
+  <div class="st rv">Selected work</div>
+  <div class="sd rv">A mix of open-source, production ML systems, and hackathon work. AutoLineage is what I'm most proud of right now.</div>
   <div class="pgrid">
-    <div class="pc rv">
+
+    <!-- AUTOLINEAGE - FEATURED -->
+    <div class="pc featured rv">
+      <div class="pv">
+        <div class="pvb pv-al">
+          <!-- Mini DAG glyph -->
+          <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <line x1="30" y1="40" x2="90" y2="40" stroke="rgba(92,225,230,.6)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="30" y1="80" x2="90" y2="40" stroke="rgba(92,225,230,.4)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="30" y1="80" x2="90" y2="80" stroke="rgba(92,225,230,.6)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="110" y1="40" x2="170" y2="60" stroke="rgba(255,107,74,.5)" stroke-width="1.5"/>
+            <line x1="110" y1="80" x2="170" y2="60" stroke="rgba(255,107,74,.5)" stroke-width="1.5"/>
+            <rect x="10" y="28" width="20" height="24" rx="3" fill="rgba(92,225,230,.15)" stroke="rgba(92,225,230,.6)"/>
+            <rect x="10" y="68" width="20" height="24" rx="3" fill="rgba(92,225,230,.15)" stroke="rgba(92,225,230,.6)"/>
+            <rect x="90" y="28" width="20" height="24" rx="3" fill="rgba(92,225,230,.25)" stroke="var(--acc)"/>
+            <rect x="90" y="68" width="20" height="24" rx="3" fill="rgba(92,225,230,.25)" stroke="var(--acc)"/>
+            <rect x="170" y="48" width="20" height="24" rx="3" fill="rgba(255,107,74,.15)" stroke="rgba(255,107,74,.7)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pcon">
+        <div class="pty pty-acc">Open Source · Python</div>
+        <div class="pnm">AutoLineage</div>
+        <div class="pds">Zero-config Python library that automatically captures end-to-end data lineage across pandas, NumPy, scikit-learn, joblib, and pickle workflows via runtime function hooking. SHA-256 integrity hashing, SQLite store, NetworkX DAG generation, a CLI, Jupyter magics, and one-command EU AI Act Article 10 compliance reports. Just <code>pip install autolineage</code>.</div>
+        <div class="pmt">
+          <div><div class="pmv">~3.5K</div><div class="pml">Lines of Python</div></div>
+          <div><div class="pmv">MIT</div><div class="pml">Licensed</div></div>
+          <div><div class="pmv">PyPI</div><div class="pml">Live</div></div>
+        </div>
+        <div class="ptc"><span>Python</span><span>pandas</span><span>NetworkX</span><span>SQLite</span><span>SHA-256</span><span>pytest</span><span>GH Actions</span></div>
+        <div class="plinks">
+          <a href="https://pypi.org/project/autolineage/" target="_blank" rel="noopener">PyPI →</a>
+          <a href="https://github.com/kishanraj41/autolineage" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc rv rvd1">
       <div class="pv"><div class="pvb pv1"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(92,225,230,.35)" stroke-width="1"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div></div>
       <div class="pcon">
         <div class="pty">Machine Learning</div>
         <div class="pnm">Member Churn Prediction</div>
-        <div class="pds">XGBoost model with SHAP explainability predicting membership churn. End-to-end Databricks pipeline with feature engineering, SMOTE balancing, and MLflow experiment tracking.</div>
-        <div class="pmt"><div><div class="pmv">500K+</div><div class="pml">Records processed</div></div><div><div class="pmv">49</div><div class="pml">Engineered features</div></div></div>
-        <div class="ptc"><span>XGBoost</span><span>PySpark</span><span>SHAP</span><span>MLflow</span><span>Databricks</span></div>
+        <div class="pds">XGBoost classifier with SHAP explainability predicting member churn at Midtown. End-to-end Databricks pipeline: feature engineering across 49 inputs, SMOTE class balancing, Hyperopt tuning, and MLflow with champion / challenger deployment. Retrains monthly.</div>
+        <div class="pmt"><div><div class="pmv">500K+</div><div class="pml">Records served</div></div><div><div class="pmv">82%</div><div class="pml">Recall</div></div></div>
+        <div class="ptc"><span>XGBoost</span><span>PySpark</span><span>SHAP</span><span>SMOTE</span><span>MLflow</span><span>Databricks</span></div>
       </div>
     </div>
-    <div class="pc rv rvd1">
-      <div class="pv"><div class="pvb pv2"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,74,.35)" stroke-width="1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg></div></div>
-      <div class="pcon">
-        <div class="pty">NLP / Healthcare</div>
-        <div class="pnm">Clinical HCC Coding Detection</div>
-        <div class="pds">NER system using ClinicalBERT and spaCy to analyze clinical notes, compare documented conditions against billed codes, and flag missed HCC revenue opportunities.</div>
-        <div class="pmt"><div><div class="pmv">&gt;85%</div><div class="pml">Precision target</div></div><div><div class="pmv">$3K+</div><div class="pml">Per missed code/yr</div></div></div>
-        <div class="ptc"><span>PyTorch</span><span>ClinicalBERT</span><span>spaCy</span><span>NER</span><span>NegSpacy</span></div>
-      </div>
-    </div>
+
     <div class="pc rv rvd2">
       <div class="pv"><div class="pvb pv5"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(251,191,36,.35)" stroke-width="1"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div></div>
       <div class="pcon">
-        <div class="pty">LLM / AI</div>
-        <div class="pnm">LLM Sentiment & Journey Analysis</div>
-        <div class="pds">Built LLM models for member feedback sentiment analysis and designed optimized prompts to model real-world customer journeys, improving intent alignment by 25–35%.</div>
-        <div class="pmt"><div><div class="pmv">25-35%</div><div class="pml">Alignment improvement</div></div></div>
-        <div class="ptc"><span>LLMs</span><span>Prompt Eng.</span><span>NLP</span><span>Python</span></div>
+        <div class="pty">LLM · Analytics</div>
+        <div class="pnm">LLM NPS Analytics Platform</div>
+        <div class="pds">Databricks ai_query with LLaMA 3.3 70B for keyword-level opinion mining over 50K+ member NPS comments. Two-stage normalization (LLM extraction + SQL keyword mapping with 30+ synonym rules) feeding parameterized cross-club dashboards. Presented to the CEO.</div>
+        <div class="pmt"><div><div class="pmv">50K+</div><div class="pml">Comments analyzed</div></div><div><div class="pmv">20%</div><div class="pml">Projected complaint reduction</div></div></div>
+        <div class="ptc"><span>LLaMA 3.3</span><span>ai_query</span><span>SQL</span><span>Databricks</span></div>
       </div>
     </div>
+
     <div class="pc rv rvd3">
+      <div class="pv"><div class="pvb pv2"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,74,.35)" stroke-width="1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg></div></div>
+      <div class="pcon">
+        <div class="pty">Healthcare NLP</div>
+        <div class="pnm">Clinical HCC Coding Detection</div>
+        <div class="pds">NER pipeline using ClinicalBERT and spaCy on clinical notes for HCC risk adjustment. Compares documented conditions against billed codes and surfaces revenue gaps with negation detection.</div>
+        <div class="pmt"><div><div class="pmv">&gt;85%</div><div class="pml">Precision</div></div><div><div class="pmv">$3K+</div><div class="pml">Per missed code/yr</div></div></div>
+        <div class="ptc"><span>PyTorch</span><span>ClinicalBERT</span><span>spaCy</span><span>SciSpacy</span><span>NER</span></div>
+      </div>
+    </div>
+
+    <div class="pc rv">
       <div class="pv"><div class="pvb pv3"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(52,211,153,.35)" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div></div>
       <div class="pcon">
         <div class="pty">Data Engineering</div>
-        <div class="pnm">Medallion Architecture Platform</div>
-        <div class="pds">End-to-end bronze/silver/gold pipelines for Amplitude analytics and Silverware POS, with SCD Type-2 historical tracking in Databricks Unity Catalog.</div>
-        <div class="pmt"><div><div class="pmv">10M+</div><div class="pml">Records / day</div></div><div><div class="pmv">30%</div><div class="pml">Faster processing</div></div></div>
+        <div class="pnm">Lakehouse Platform</div>
+        <div class="pds">Bronze, silver, gold pipelines on Azure Databricks + Unity Catalog. Six source systems, streaming via Auto Loader with insert_id-based exactly-once dedup, SCD Type-2 historical tracking, and a data quality framework that became the org-wide template.</div>
+        <div class="pmt"><div><div class="pmv">6</div><div class="pml">Source systems</div></div><div><div class="pmv">40%</div><div class="pml">Fewer incidents</div></div></div>
         <div class="ptc"><span>ADF</span><span>Databricks</span><span>Delta Lake</span><span>SCD-2</span><span>Unity Catalog</span></div>
       </div>
     </div>
-    <div class="pc rv">
-      <div class="pv"><div class="pvb pv4"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(92,225,230,.35)" stroke-width="1"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div></div>
+
+    <div class="pc rv rvd1">
+      <div class="pv"><div class="pvb pv4"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(251,191,36,.35)" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div></div>
+      <div class="pcon">
+        <div class="pty">Hackathon · Multi-Agent</div>
+        <div class="pnm">NVIDIA Gen AI Hackathon (2nd Place)</div>
+        <div class="pds">Multi-agent system on Google Cloud using Gemini 2.0 Flash, Google ADK agents, MCP servers, and GKE. Conversational product discovery, smart-cart optimization, and multi-currency price comparison in a microservices e-commerce platform.</div>
+        <div class="pmt"><div><div class="pmv">2nd</div><div class="pml">Placement</div></div><div><div class="pmv">2024</div><div class="pml">NVIDIA</div></div></div>
+        <div class="ptc"><span>Gemini 2.0</span><span>Google ADK</span><span>MCP</span><span>GKE</span></div>
+      </div>
+    </div>
+
+    <div class="pc rv rvd2">
+      <div class="pv"><div class="pvb pv6"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(92,225,230,.35)" stroke-width="1"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div></div>
       <div class="pcon">
         <div class="pty">Cloud Migration</div>
-        <div class="pnm">10TB+ Finance Data Migration</div>
-        <div class="pds">Led large-scale migration of historical finance data to Azure cloud with Snowflake SSOT tables, Kafka real-time ingestion, and near-real-time financial analytics.</div>
-        <div class="pmt"><div><div class="pmv">10TB+</div><div class="pml">Data migrated</div></div><div><div class="pmv">25%</div><div class="pml">Faster processing</div></div></div>
+        <div class="pnm">10TB+ Finance Migration to Azure</div>
+        <div class="pds">Led migration of 10TB+ historical finance data to Azure at Optum. Redesigned ETL workflows, consolidated redundant pipelines, and added Snowflake SSOT tables with Kafka real-time ingestion to enable near-real-time financial analytics.</div>
+        <div class="pmt"><div><div class="pmv">10TB+</div><div class="pml">Migrated</div></div><div><div class="pmv">25%</div><div class="pml">Faster processing</div></div></div>
         <div class="ptc"><span>Azure</span><span>Snowflake</span><span>Kafka</span><span>Power BI</span></div>
       </div>
     </div>
-    <div class="pc rv rvd1">
-      <div class="pv"><div class="pvb pv6"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,74,.35)" stroke-width="1"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div></div>
-      <div class="pcon">
-        <div class="pty">Analytics</div>
-        <div class="pnm">Predictive Campaign Optimization</div>
-        <div class="pds">Scikit-learn models analyzing customer behavior patterns to optimize multi-channel marketing campaigns, increasing targeted conversion rates by 15%.</div>
-        <div class="pmt"><div><div class="pmv">15%</div><div class="pml">Conversion lift</div></div></div>
-        <div class="ptc"><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Python</span></div>
-      </div>
-    </div>
+
   </div>
 </section>
 
@@ -423,13 +568,28 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
 
 <!-- WRITING -->
 <section id="writing">
-  <div class="sl rv">05 — Writing</div>
-  <div class="st rv">Articles & thoughts</div>
-  <div class="sd rv">Technical writing on data architecture, ML engineering, and the AI era.</div>
+  <div class="sl rv">05 · Writing</div>
+  <div class="st rv">Articles & notes</div>
+  <div class="sd rv">Long-form writing on data engineering, ML reproducibility, and the stuff I'm shipping. Mostly on Medium.</div>
   <div class="artg">
-    <a href="#" class="artc rv"><div class="artn">01</div><div class="artt">Data Architecture for the AI Era</div><div class="arte">How modern data architectures need to evolve to support AI workloads — from lakehouse patterns to feature stores and real-time ML serving.</div><div class="artm">Medium · Data Engineering</div></a>
-    <a href="#" class="artc rv rvd1"><div class="artn">02</div><div class="artt">Medallion Architecture in Production</div><div class="arte">Real-world lessons from building bronze/silver/gold pipelines at scale with Databricks, Delta Lake, and Unity Catalog.</div><div class="artm">Medium · Architecture</div></a>
-    <a href="#" class="artc rv rvd2"><div class="artn">03</div><div class="artt">End-to-End ML on Databricks</div><div class="arte">From feature engineering in PySpark to MLflow tracking and SHAP explainability — a practical guide to production ML.</div><div class="artm">Medium · Machine Learning</div></a>
+    <a href="https://medium.com/@kishanraj41" target="_blank" rel="noopener" class="artc rv">
+      <div class="artn">M</div>
+      <div class="artt">Latest articles on Medium</div>
+      <div class="arte">I write about ML pipeline reproducibility, lakehouse patterns, and lessons from shipping AutoLineage. New posts on a roughly monthly cadence.</div>
+      <div class="artm">Medium · @kishanraj41 →</div>
+    </a>
+    <a href="https://github.com/kishanraj41" target="_blank" rel="noopener" class="artc rv rvd1">
+      <div class="artn">{ }</div>
+      <div class="artt">Code on GitHub</div>
+      <div class="arte">AutoLineage and other open-source experiments. Issues, PRs, and the actual code behind the libraries I write about.</div>
+      <div class="artm">GitHub · @kishanraj41 →</div>
+    </a>
+    <a href="https://pypi.org/project/autolineage/" target="_blank" rel="noopener" class="artc rv rvd2">
+      <div class="artn">π</div>
+      <div class="artt">AutoLineage on PyPI</div>
+      <div class="arte">Install with <code style="font-family:var(--mono);font-size:.9em;color:var(--acc);background:var(--bg);padding:.1em .4em;border-radius:4px">pip install autolineage</code>. Release notes, changelog, and version history live here.</div>
+      <div class="artm">PyPI · autolineage →</div>
+    </a>
   </div>
 </section>
 
@@ -437,23 +597,25 @@ footer{padding:3rem 4rem;border-top:1px solid var(--bdr);display:flex;justify-co
 
 <!-- CONTACT -->
 <section id="contact" class="csec">
-  <div class="sl rv">06 — Contact</div>
-  <div class="st rv">Let's build something</div>
-  <p class="sd rv">Open to data engineering roles, AI product collaborations, and conversations about building systems at scale.</p>
+  <div class="sl rv">06 · Contact</div>
+  <div class="st rv">Let's talk</div>
+  <p class="sd rv">Open to data engineering and ML roles, open-source collaborations, and conversations about building reliable AI systems. Best way to reach me is email.</p>
   <div class="clnks rv">
     <a href="mailto:kishanraj41@gmail.com" class="cpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>kishanraj41@gmail.com</a>
-    <a href="https://github.com/kishanraj41" target="_blank" class="cpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
-    <a href="https://www.linkedin.com/in/kishan-raj-v-31b42b8b/" target="_blank" class="cpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-    <a href="https://medium.com/@kishanraj41" target="_blank" class="cpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>Medium</a>
+    <a href="https://github.com/kishanraj41" target="_blank" rel="noopener" class="cpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+    <a href="https://www.linkedin.com/in/kishan-r-31b42b8b" target="_blank" rel="noopener" class="cpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+    <a href="https://pypi.org/project/autolineage/" target="_blank" rel="noopener" class="cpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>PyPI</a>
+    <a href="https://medium.com/@kishanraj41" target="_blank" rel="noopener" class="cpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>Medium</a>
   </div>
 </section>
 
 <footer>
-  <span>&copy; 2026 Kishan Raj</span>
+  <span>&copy; 2026 Kishan Raj · Built with HTML, CSS, and stubbornness</span>
   <div class="fright">
-    <a href="https://github.com/kishanraj41" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/kishan-raj-v-31b42b8b/" target="_blank">LinkedIn</a>
-    <a href="https://medium.com/@kishanraj41" target="_blank">Medium</a>
+    <a href="https://github.com/kishanraj41" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/kishan-r-31b42b8b" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://pypi.org/project/autolineage/" target="_blank" rel="noopener">PyPI</a>
+    <a href="https://medium.com/@kishanraj41" target="_blank" rel="noopener">Medium</a>
   </div>
 </footer>
 
